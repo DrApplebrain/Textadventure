@@ -11,7 +11,9 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import NoHeaderFooterLayout from "./Components/NoHeaderFooterLayout";
 import { ScenarioProvider } from "./Scenarios/ScenarioContext";
-import TestGameScreen from "./Pages/Test-GameScreen"; // Korrigierter Importpfad
+import TestGameScreen from "./Pages/Test-GameScreen";
+import Forum from "./Pages/Forum"; 
+import ThemenAnsicht from "./Pages/ThemenAnsicht";
 
 function App() {
   const [originPage, setOriginPage] = useState("stories");
@@ -21,8 +23,8 @@ function App() {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-    setUserName("BeispielName"); // Ersetzen mit echter Logik
-    setUserEmail("beispiel@beispiel.com"); // Ersetzen echter Logik
+    setUserName("BeispielName");
+    setUserEmail("beispiel@beispiel.com");
   };
 
   const handleLogout = () => {
@@ -49,7 +51,7 @@ function App() {
           />
           <Route
             path="/test-game"
-            element={<TestGameScreen />} // Route für die Test-GameScreen-Komponente
+            element={<TestGameScreen />}
           />
           <Route
             path="*"
@@ -58,6 +60,8 @@ function App() {
                 <Header />
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/forum" element={<Forum />} />
+                  <Route path="/thread/:topicId" element={<ThemenAnsicht />} />
                   <Route
                     path="/profile"
                     element={

@@ -1,0 +1,144 @@
+.forum-container {
+    margin: auto;
+    max-width: 1000px;
+    padding: 100px 0 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.forum {
+    padding: 5px;
+    background-color: hsla(0, 0%, 30%, 0.4);
+    border-radius: 10px;
+}
+
+.forum-list > li {
+    list-style: none;
+    padding: 0 0 5px 0;
+}
+
+.forum-list > li > *{
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: hsla(0, 0%, 100%, 0.8);
+}
+
+.forum-list > li > *:hover{
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: hsla(0, 0%, 100%, 0.9);
+}
+
+.thread-title {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    background-color: hsla(0, 0%, 100%, 0.6);
+    border-radius: 5px;
+    list-style: none;
+}
+
+.thread-title:hover {
+    background-color: hsla(0, 0%, 100%, 0.8);
+    cursor: pointer;
+}
+
+.thread-detail-container {
+    padding: 100px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.comment-list {
+    list-style: none;
+}
+
+.comment-container {
+    padding: 5px 20px;
+    margin: 0 0 10px 0;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    border-radius: 10px;
+    display: flex;
+}
+
+.comment-user {
+    font-weight: bold;
+    width: 100px;
+}
+
+.thread-title {
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    color: white;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    position: relative;
+    height: 200px; 
+  }
+
+.thread-title h3, .thread-title p, .thread-title span {
+    position: relative;
+  }
+  
+.thread-title h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+.thread-title p {
+    font-size: 1.1em;
+  }
+  
+.thread-title span {
+    font-size: 1em;
+  }
+
+#comment-input-name {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    outline: none;
+    padding: 0 0 5px 0;
+}
+
+#comment-input {
+    width: 100%
+}
+
+.thread-image-upload {
+    display: flex;
+}
+
+.thread-image-upload > * {
+    margin: 0 auto;
+    width: 100px;
+}
+
+.upload-label{
+    background-color: hsla(0, 0%, 100%, 0.5);
+    border-radius: 15px;
+}
+
+.upload-label:hover {
+    background-color: hsla(0, 0%, 100%, 0.8);
+    cursor: pointer;
+    box-shadow: 0 0 5px  white
+}
+
+#addThreadBtn {
+    border-radius: 15px;
+}
+
+#addThreadBtn:hover {
+    
+}
