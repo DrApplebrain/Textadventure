@@ -1,6 +1,6 @@
 let data1 = "Homelander"; //Erster Post - Keyword
-let data2 = "Homelander läuft nach NY im Marvel und fängt lauthals streit an"; //Alle Anworten danach
-let data = { data2 }
+let data2 = "Homelander löscht New York aus, zum Spaß"; //Alle Anworten danach
+let data = { data1 }
 
 
 let options = {

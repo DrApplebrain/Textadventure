@@ -26,7 +26,7 @@ const Profile = ({
   const getScenarioDetails = (id) =>
     scenarios.find((scenario) => scenario.id === id) || {};
 
-  // Hinzufügen von scenarioTitle zu playScenario
+  //
   const playScenario = (scenarioId, scenarioTitle) => {
     setOriginPage("profile");
     navigate(`/game/${scenarioId}/${encodeURIComponent(scenarioTitle)}`);
@@ -38,117 +38,131 @@ const Profile = ({
       alert("Link zum Szenario wurde kopiert!");
     });
   };
+  //
 
   const handleContactSubmit = (message) => {
     console.log("Kontakt Nachricht:", message);
-    // Hier kann man Logik hinzufügen, um die Nachricht zu verarbeiten
   };
 
   return (
-    <main className="profile-background">
-      {!isLoggedIn ? (
-        <>
-          <p>Melde dich an, um die volle Funktion der Seite zu bekommen.</p>
-          <button
-            onClick={() => navigate("/register")}
-            className="an-abmelden-toggle-button"
-          >
-            Anmelden
-          </button>
-        </>
-      ) : (
-        <>
-          <h2>Hallo {userName}</h2>
-          <p>Du bist mit {userEmail} angemeldet.</p>
-          <button onClick={onLogout} className="an-abmelden-toggle-button">
-            Abmelden
-          </button>
-        </>
-      )}
-
-      <button
-        onClick={() => toggleSection("likes")}
-        className="an-abmelden-toggle-button"
-      >
-        Likes
-      </button>
-      <div className="scenario-container">
-        {activeSection === "likes" &&
-          (likedScenarios.length > 0 ? (
-            likedScenarios.map((id, index) => {
-              const { title, description, image } = getScenarioDetails(id);
-              return (
-                <div key={index} className="scenario">
-                  <img src={image} alt={title} className="scenario-image" />
-                  <div className="scenario-details">
-                    <h4>{title}</h4>
-                    <p>{description}</p>
-                    <div className="button-group">
-                      <button onClick={() => playScenario(id, title)}>
-                        <Icon type="play" />
-                      </button>
-                      <button onClick={() => handleShare(id)}>
-                        <Icon type="share" />
-                      </button>
-                      <button onClick={() => removeLike(id)}>
-                        <Icon type="delete" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })
-          ) : (
-            <p>Keine gelikten Szenarien.</p>
-          ))}
+    <main className="main-profile">
+      <div className="user-info">
+        {!isLoggedIn ? (
+          <h3>Melde dich an, um die volle Funktion der Seite zu bekommen.</h3>
+        ) : (
+          <>
+            <h3>Hallo</h3>
+            <h2>Kai</h2>
+            <p>Du bist mit: kai.chr1995@outlook.de angemeldet.</p>
+          </>
+        )}
       </div>
 
-      <button
-        onClick={() => toggleSection("favorites")}
-        className="an-abmelden-toggle-button"
-      >
-        Favoriten
-      </button>
-      <div className="scenario-container">
-        {activeSection === "favorites" &&
-          (savedScenarios.length > 0 ? (
-            savedScenarios.map((id, index) => {
-              const { title, description, image } = getScenarioDetails(id);
-              return (
-                <div key={index} className="scenario">
-                  <img src={image} alt={title} className="scenario-image" />
-                  <div className="scenario-details">
-                    <h4>{title}</h4>
-                    <p>{description}</p>
-                    <div className="button-group">
-                      <button onClick={() => playScenario(id, title)}>
-                        <Icon type="play" />
-                      </button>
-                      <button onClick={() => handleShare(id)}>
-                        <Icon type="share" />
-                      </button>
-                      <button onClick={() => removeFavorite(id)}>
-                        <Icon type="delete" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })
-          ) : (
-            <p>Keine gespeicherten Szenarien.</p>
-          ))}
+      <div className="button-container">
+        {!isLoggedIn ? (
+          <>
+            <button
+              onClick={() => navigate("/register")}
+              className="an-abmelden-toggle-button"
+            >
+              Anmelden
+            </button>
+          </>
+        ) : (
+          <>
+            <button onClick={onLogout} className="an-abmelden-toggle-button">
+              Abmelden
+            </button>
+          </>
+        )}
+        <button
+          onClick={() => toggleSection("likes")}
+          className="an-abmelden-toggle-button"
+        >
+          Likes
+        </button>
+        <button
+          onClick={() => toggleSection("favorites")}
+          className="an-abmelden-toggle-button"
+        >
+          Favoriten
+        </button>
+        <button
+          onClick={() => toggleSection("contact")}
+          className="an-abmelden-toggle-button"
+        >
+          Kontakt
+        </button>
       </div>
 
-      <button
-        onClick={() => toggleSection("contact")}
-        className="an-abmelden-toggle-button"
-      >
-        Kontakt
-      </button>
-      {activeSection === "contact" && (
-        <Contact onSubmit={handleContactSubmit} />
-      )}
+      <div className="content-container">
+        {activeSection === "likes" && (
+          <div className="scenario-container">
+            {likedScenarios.length > 0 ? (
+              likedScenarios.map((id, index) => {
+                const { title, description, image } = getScenarioDetails(id);
+                return (
+                  <div key={index} className="scenario">
+                    <img src={image} alt={title} className="scenario-image" />
+                    <div className="scenario-details">
+                      <h4>{title}</h4>
+                      <div className="button-group">
+                        <div onClick={() => playScenario(id, title)}>
+                          <Icon type="play" />
+                        </div>
+                        <div onClick={() => handleShare(id)}>
+                          <Icon type="share" />
+                        </div>
+                        <div onClick={() => removeLike(id)}>
+                          <Icon type="delete" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <p>Keine gelikten Szenarien.</p>
+            )}
+          </div>
+        )}
+
+        {activeSection === "favorites" && (
+          <div className="scenario-container">
+            {savedScenarios.length > 0 ? (
+              savedScenarios.map((id, index) => {
+                const { title, description, image } = getScenarioDetails(id);
+                return (
+                  <div key={index} className="scenario">
+                    <img src={image} alt={title} className="scenario-image" />
+                    <div className="scenario-details">
+                      <h4>{title}</h4>
+                      <p>{description}</p>
+                      <div className="button-group">
+                        <div onClick={() => playScenario(id, title)}>
+                          <Icon type="play" />
+                        </div>
+                        <div onClick={() => handleShare(id)}>
+                          <Icon type="share" />
+                        </div>
+                        <div onClick={() => removeFavorite(id)}>
+                          <Icon type="delete" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <p>Keine gespeicherten Szenarien.</p>
+            )}
+          </div>
+        )}
+
+        {activeSection === "contact" && (
+          <Contact onSubmit={handleContactSubmit} />
+        )}
+      </div>
     </main>
   );
 };

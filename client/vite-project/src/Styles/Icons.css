@@ -1,7 +1,7 @@
 .icon {
   fill: currentColor;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
@@ -18,18 +18,11 @@
 .send,
 .exit,
 .save-pdf {
-  color:white;
+  color: var(--text-color);
 }
 
 
-.play:hover,
-.share:hover,
-.delete:hover,
-.save:hover,
-.heart:hover,
-.next:hover,
-.send:hover,
-.exit:hover,
-.save-pdf:hover {
-  color: rgb(128, 255, 0);
+
+.exit{
+  fill: none;
 }

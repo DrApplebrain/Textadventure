@@ -40,7 +40,7 @@ const teamMembers = [
 
 function About() {
   return (
-    <main className="about-background">
+    <main className="main-about">
       <section className="content-section">
         <h1>
           Entdecke das nächste Level des Geschichtenerzählens – Dein Abenteuer,

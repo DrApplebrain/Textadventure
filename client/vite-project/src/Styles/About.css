@@ -1,37 +1,20 @@
-.about-background {
-  background-image: linear-gradient(rgba(255, 0, 0, 0.233), rgba(0, 0, 0, 0.5)), url("/Images/1728683712956_obZsi3jN.png");
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  
-}
-
 .content-section {
-  margin-top: 120px;
   max-width: 800px;
-  background: rgba(0, 0, 0, 0.411);
+  height: 90%;
+  background: var(--secondary-background-color);
   padding: 20px;
-  border-radius: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
   text-align: center;
-  overflow:scroll ;
+  overflow: scroll;
 }
 
 .content-section::-webkit-scrollbar {
   display: none;
 }
 
-/* Für Firefox */
 .content-section {
   scrollbar-width: none;
-}
-
-h1, h2, h3 {
-  color: #ffe600;
-  text-shadow: rgba(0, 204, 255, 0.562) 0 0 20px;
-}
-
-p {
-  color: #ffffff;
 }
 
 .team-container {
@@ -53,24 +36,29 @@ p {
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow:  rgba(0, 204, 255, 0.562) 0 0 20px;
+  box-shadow: var(--box-shadow);
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem 0 0.5rem;
 }
 
 .social-icons a {
-  display: block;
   margin-top: 5px;
   text-decoration: none;
-  color: #0073b1;
+  color: var(--primary-color);
 }
 
 .social-icons a:first-child {
-  color: #ff0000;
+  color: var(--error-color);
 }
 
 .social-icons a:hover {
-  color: rgb(0, 60, 255);
+  color: var(--highlight-color);
 }
 
 .social-icons a:first-child:hover {
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--highlight-background-color);
 }

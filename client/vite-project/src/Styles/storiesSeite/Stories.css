@@ -1,70 +1,51 @@
-.stories-background {
-  background-image: linear-gradient(rgba(255, 0, 0, 0.315), rgba(0, 0, 0, 0.5)), url("/Images/1728686633118_6nfLx6Wm.png");
-}
-
 .stories-contents {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 1rem;
-  padding: 1rem;
-  
+  flex-direction: column;
+  gap: var(--distance);
+  padding: var(--distance);
+  text-align: center;
+  align-items: center;
 }
 
 .create-scenario {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.2rem;
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.459);
-  border-radius: 1rem;
-  
+  gap: var(--distance);
+  padding: var(--distance);
+  background-color: var(--secondary-background-color);
+  border-radius: var(--border-radius);
 }
 
 .create-scenario h2 {
   align-self: flex-start;
 }
 
-.create-scenario input,
-.create-scenario textarea {
+#scenarioTitle{
   width: 100%;
-  padding: 0.4rem;
-  border-radius: 1rem;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
 }
 
-.create-scenario textarea {
-  height: 100px; /* Anpassung der Höhe für die Beschreibung */
-}
-
-.play, .icon {
+.play-icon {
   align-self: flex-end;
-  margin-top: 5px;
-}
-
-.stories-container {
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.459);
-  border-radius: 1rem;
 }
 
 .scenarios-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 1rem;
+  gap: var(--distance);
+  padding: var(--distance);
+  border-radius: var(--border-radius);
   overflow: scroll;
-  max-height: 50vh;
+  max-height: 60vh;
 }
 
-/* Scrollbar ausblenden */
 .scenarios-list::-webkit-scrollbar {
   display: none;
 }
 
-/* Für Firefox */
 .scenarios-list {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }

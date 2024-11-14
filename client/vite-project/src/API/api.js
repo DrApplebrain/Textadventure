@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const baseURL = process.env.NODE_ENV === 'development' 
-  ? 'http://localhost:5000/api' 
-  : 'https://adventure.api.binarybears.net/api';
+const baseURL = import.meta.env.MODE === 'development' 
+  ? import.meta.env.VITE_API_BASE_URL 
+  : import.meta.env.VITE_API_BASE_URL_PROD;
 
 const apiClient = axios.create({
   baseURL,

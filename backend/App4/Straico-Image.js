@@ -86,7 +86,7 @@ async function fetchFollow(variable) {
   // Post Body
   var raw2 = JSON.stringify({
     model: "openai/dall-e-3",
-    description: `${keyWord}. ${variable}. ${img2}`,
+    description: `${variable}. ${img2}`,
     size: "square",
     variations: 1,
   });

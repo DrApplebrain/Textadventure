@@ -50,90 +50,92 @@ const Register = ({ onLogin }) => {
   };
 
   return (
-    <main className="register-background">
+    <main className="main-register">
       <div className="register-content">
-      <h1>{isRegistrationMode ? "Registrieren" : "Anmelden"}</h1>
-      <button onClick={() => handleSocialLogin("Google")}>
-      <Icon type="google" />{isRegistrationMode ? "registrieren" : "anmelden"}
-      </button>
-      <button onClick={() => handleSocialLogin("Facebook")}>
-      <Icon type="facebook" /> {isRegistrationMode ? "registrieren" : "anmelden"}
-      </button>
-      <form onSubmit={handleSubmit}>
-        {isRegistrationMode && (
+        <h1>{isRegistrationMode ? "Registrieren" : "Anmelden"}</h1>
+        <div className="social-login">
+          <div onClick={() => handleSocialLogin("Google")}>
+            <Icon type="google" />
+          </div>
+          <div onClick={() => handleSocialLogin("Facebook")}>
+            <Icon type="facebook" />
+          </div>
+        </div>
+        <form onSubmit={handleSubmit}>
+          {isRegistrationMode && (
+            <div>
+              <label htmlFor="usernameReg">Benutzername:</label>
+              <input
+                type="text"
+                id="usernameReg"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+                autoComplete="username"
+              />
+            </div>
+          )}
           <div>
-            <label htmlFor="usernameReg">Benutzername:</label>
+            <label htmlFor="email">E-Mail:</label>
             <input
-              type="text"
-              id="usernameReg"
-              name="username"
-              value={formData.username}
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
               required
-              autoComplete="username"
+              autoComplete="email"
             />
           </div>
-        )}
-        <div>
-          <label htmlFor="email">E-Mail:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            autoComplete="email"
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Passwort:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            autoComplete={isRegistrationMode ? "new-password" : "current-password"}
-          />
-        </div>
-        {isRegistrationMode && (
           <div>
-            <label htmlFor="confirmPassword">Passwort bestätigen:</label>
+            <label htmlFor="password">Passwort:</label>
             <input
               type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
+              id="password"
+              name="password"
+              value={formData.password}
               onChange={handleChange}
               required
-              autoComplete="new-password"
+              autoComplete={isRegistrationMode ? "new-password" : "current-password"}
             />
           </div>
+          {isRegistrationMode && (
+            <div>
+              <label htmlFor="confirmPassword">Passwort bestätigen:</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+                autoComplete="new-password"
+              />
+            </div>
+          )}
+          <button type="submit">
+            {isRegistrationMode ? "Erstellen" : "Einloggen"}
+          </button>
+        </form>
+
+        {!isRegistrationMode && (
+          <button
+            onClick={() =>
+              alert(
+                "Bitte überprüfen Sie Ihre E-Mails, um Ihr Passwort zurückzusetzen."
+              )
+            }
+          >
+            Passwort vergessen?
+          </button>
         )}
-        <button type="submit">
-          {isRegistrationMode ? "Erstellen" : "Einloggen"}
-        </button>
-      </form>
 
-      {!isRegistrationMode && (
-        <button
-          onClick={() =>
-            alert(
-              "Bitte überprüfen Sie Ihre E-Mails, um Ihr Passwort zurückzusetzen."
-            )
-          }
-        >
-          Passwort vergessen?
+        <button onClick={() => setRegistrationMode(!isRegistrationMode)}>
+          {isRegistrationMode
+            ? "Bereits registriert? Hier anmelden"
+            : "Noch kein Konto? Hier registrieren"}
         </button>
-      )}
-
-      <button onClick={() => setRegistrationMode(!isRegistrationMode)}>
-        {isRegistrationMode
-          ? "Bereits registriert? Hier anmelden."
-          : "Noch kein Konto? Hier registrieren."}
-      </button>
       </div>
     </main>
   );

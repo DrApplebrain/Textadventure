@@ -1,15 +1,16 @@
 .scenario-card {
   width: 350px;
   height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-size: cover;
   background-position: center;
-  background-size: cover;
-  text-shadow: 1px 1px 2px rgb(255, 0, 0);
+  text-shadow: var(--text-shadow);
   padding: 5px;
-  margin: 5px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.582);
-  color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: var(--text-color);
 }
 
 .scenario-card:hover {
@@ -17,47 +18,29 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
-
-.scenario-card button {
-  margin: 1px;
-  padding: 10px;
-  border: none;
-  border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  cursor: pointer;
-}
-
 .scenario-header {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Vertikale Zentrierung */
 }
 
 .scenario-content {
-    height: 115px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 15px;
+  flex-grow: 1; /* Nimmt den restlichen verfügbaren Platz ein */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Zentriert den Inhalt vertikal */
+  background-color: var(--highlight-background-color);
+  border-radius: var(--border-radius);
 }
 
 .scenario-actions {
   display: flex;
   justify-content: space-between;
-  
 }
 
-.scenario-actions button {
-  background: none;
+.scenario-logo {
+  width: 30px;
+  height: 25px;
 }
 
-.scenario-actions button:focus {
-  outline: none;
-}
-
-
-
-.scenario-logo img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
 

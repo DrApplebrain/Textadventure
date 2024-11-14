@@ -20,8 +20,8 @@ const Contact = ({ onSubmit }) => {
 
   return (
     <div className='contact-form'>
-      <p>Wir freuen uns, weitere Ideen und Vorschläge zu bekommen!</p>
-      <form onSubmit={handleContactSubmit} className="contact-form">
+      <h4>Wir freuen uns, weitere Ideen und Vorschläge zu bekommen!</h4>
+      <form onSubmit={handleContactSubmit} >
         
         <div className="form-group">
           <label htmlFor="email">Email:</label>

@@ -1,22 +1,29 @@
 .contact-form {
+  width: 100%;
   max-width: 600px;
   margin: 2rem auto;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 1rem;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.562);
-  color: aliceblue;
+  background-color: var(--secondary-background-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  color: var(--text-color);
 }
 
-.contact-form p {
-  font-size: 1em;
+form{
+  border-radius: var(--border-radius);
+  box-shadow: var(--text-shadow);
+  padding: 1rem;
+}
+
+.contact-form h4 {
+  font-size: var(--font-size-body);
   margin-bottom: 1rem;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  font-size: 0.9em;
+  font-size: var(--font-size-body);
 }
 
 .form-group input,
@@ -24,22 +31,12 @@
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
-  border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   background-color: rgba(255, 255, 255, 0.8);
 }
 
 .submit-button {
   width: 100%;
   padding: 0.7rem;
-  border: none;
-  border-radius: 0.5rem;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  font-size: 1em;
 }
 
-.submit-button:hover {
-  background-color: #0056b3;
-}

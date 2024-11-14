@@ -1,88 +1,185 @@
-import { useState, useEffect, useCallback } from 'react';
-import '../../Styles/storiesSeite/GameScreen.css';
-import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
+import "../../Styles/storiesSeite/GameScreen.css";
+import { useState, useEffect, useCallback } from "react";
 import Icon from "../../Components/Icons";
 
-const GameScreen = ({ onExit }) => {
-  const {scenarioTitle } = useParams();
-  const [currentText, setCurrentText] = useState('');
-  const [userInput, setUserInput] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [gameStarted, setGameStarted] = useState(false);
+function GameScreen({ scenarioTitle, onExit }) {
+  const [text, setItems1] = useState([]);
+  const [image, setItems2] = useState(``);
+  const [load, setLoad] = useState(false);
+  const [loadThis, setLoadThis] = useState(false);
+  const [data2, setTitle] = useState(``);
+  const [counter, setCounter] = useState(0);
+  let localURL = "http://localhost:5000/api/";
+  let onlineURL = "https://adventure.api.binarybears.net/api/";
 
-  const dummyInitialText = `Willkommen in deinem Abenteuer! Szenario Titel: ${scenarioTitle}`;
-  const dummyNextText = "Dies ist der nächste Abschnitt deines Abenteuers.";
-
-  const startGame = useCallback(async () => {
-    setLoading(true);
-    setTimeout(() => {
-      setCurrentText(dummyInitialText);
-      setGameStarted(true);
-      setLoading(false);
-    }, 1000);
-  }, [dummyInitialText]);
-
-  useEffect(() => {
-    startGame();
-  }, [startGame]);
-
-  const nextStep = async () => {
-    setLoading(true);
-    setTimeout(() => {
-      setCurrentText(dummyNextText);
-      setUserInput('');
-      setLoading(false);
-    }, 1000);
-  };
-
-  const submitInput = async () => {
-    if (!userInput) return; 
-    setLoading(true);
-    setTimeout(() => {
-      setCurrentText(`Benutzereingabe: ${userInput}`);
-      setUserInput('');
-      setLoading(false);
-    }, 1000);
-  };
-
-  const handleExit = () => {
-    onExit();
-  };
-
-  if (loading) {
-    return <div>Wird geladen...</div>;
+  async function FetchData() {
+    setTimeout(fetchText, 20000);
+    setTimeout(fetchImage, 20000);
   }
 
-  return (
-    <main className="gameScreen-background">
-      <div className="game-screen">
-        <button className="exit-button" onClick={handleExit}><Icon type="exit" /></button>
-        <div className="story-content">
-          <div className="story-text">
-            <p>{currentText}</p>
-          </div>
+  function fetchText() {
+    fetch(`${localURL}text/${counter}`)
+      .then((response1) => response1.json())
+      .then((data1) => {
+        setItems1(data1);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  function fetchImage() {
+    fetch(`${localURL}image/${counter}`)
+      .then((response4) => response4.json())
+      .then((data4) => {
+        setItems2(data4);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  let data = { data2 };
+
+  let options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json",
+    },
+  };
+
+  function maybePost() {
+    console.log(image);
+    console.log(text);
+    console.log(data2);
+
+    setItems1([]);
+    setItems2(``);
+    setLoad(false);
+    setCounter((counter) => counter + 1);
+    console.log(counter);
+    post();
+    setLoadThis(false);
+    FetchData();
+  }
+
+  function maybePost1(vari) {
+    setTitle(vari);
+    console.log(vari);
+    setItems1([]);
+    setItems2(``);
+    setLoad(false);
+    setCounter((counter) => counter + 1);
+    console.log(counter);
+    post();
+    setLoadThis(false);
+    FetchData();
+  }
+
+  
+
+  async function post() {
+    let urlOption = `${localURL}option/0`;
+    try {
+      fetch(urlOption, options)
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+      post2();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function post2() {
+    let urlImage = `${localURL}image/0`;
+    try {
+      fetch(urlImage, options)
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function openLoad() {
+    setLoad(true);
+  }
+
+  function Check() {
+    if (!loadThis) {
+      FetchData();
+      setTimeout(openLoad, 20000);
+      setLoadThis(true);
+    }
+
+    /*if (image && (text.text || text.option1) !== ``) {
+      setLoad(true);
+    } else {
+      FetchData();
+    }*/
+  }
+
+  
+
+  if (load) {
+    return (
+      <>
+      <div className="exit-button" onClick={onExit}>
+          <Icon type="exit" />
         </div>
-        {gameStarted && (
+        <main className="main-gameScreen">
+          <div className="game-screen"></div>
+        <div className="story-content">
+          <h2>{scenarioTitle}</h2>
+          <img src={image} className="story-image" alt="fetch" />
+          <p className="story-text">{text.text}</p>
+          <div className="story-options">
+            <p className="option">
+              {text.option1}
+            </p>
+            <p className="option">
+              {text.option2}
+            </p>
+            <p className="option">
+              {text.option3}
+            </p>
+          </div>
           <div className="user-interaction">
             <input
               type="text"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
+              onChange={(event) => setTitle(event.target.value)}
               placeholder="Geben Sie Ihre Eingabe ein"
-              id="user-input"
+              id="userInput"
             />
-            <button onClick={submitInput}><Icon type="send" /></button>
-            <button onClick={nextStep}><Icon type="next" /></button>
+            <div onClick={maybePost}>
+              <Icon type="send" />
+            </div>
           </div>
-        )}
-      </div>
-    </main>
-  );
-};
-
-GameScreen.propTypes = {
-  onExit: PropTypes.func.isRequired,
-};
+        </div>
+        </main>
+      </>
+    );
+  } else {
+    return (
+      <>
+      <div className="exit-button" onClick={onExit}>
+          <Icon type="exit" />
+        </div>
+        <main className="main-gameScreen">
+          <div className="game-screen"></div>
+        <div className="loading-overlay">
+          <img
+            src="/Logo/tia-logo.svg"
+            className="loading-logo"
+            alt="loading"
+          />
+        </div>
+        {Check()}
+        </main>
+      </>
+    );
+  }
+}
 
 export default GameScreen;

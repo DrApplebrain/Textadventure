@@ -1,40 +1,102 @@
-.gameScreen-background {
-  background-image: none;
-  background-color: #000000de;
-}
 
 .game-screen {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
 }
 
 .exit-button {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 0.5rem;
+  top: 0.5rem;
 }
 
 .story-content {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  gap: var(--distance);
+  padding: var(--distance);
+}
+
+.story-image {
+  height: 45%;
+  width: 100%;
+  max-width: 700px;
+  background-color: var(--highlight-background-color);
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.story-text {
+  width: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  text-shadow: var(--text-shadow);
+  font-size: var(--font-size-heading);
+}
+
+.story-options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--distance);
+}
+
+.option {
+  cursor: pointer;
+  color: var(--secondary-color);
+  font-family: var(--font-mono);
+}
+
+.option:hover {
+  color: var(--highlight-color);
 }
 
 .user-interaction {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
-}
-
-.user-interaction button {
-  background-color:rgba(0, 0, 0, 0);
-  border: none;
+  align-items: center;
+  bottom: 10px;
+  width: 100%;
+  padding-bottom: var(--distance);
 }
 
 input[type="text"] {
   width: 60%;
-  margin-right: 10px;
+  margin-right: var(--distance);
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-logo {
+  width: 100px;
+  height: 100px;
+  animation: loadingAnimation 2s infinite ease-in-out;
 }

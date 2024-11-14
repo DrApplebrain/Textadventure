@@ -1,92 +1,92 @@
-.profile-background {
-  background-image: linear-gradient(rgba(255, 0, 0, 0.349), rgba(0, 0, 0, 0.5)), url("/Images/1728683718145_6QRaafpS.png");
+.user-info {
+  text-align: center;
+  width: 100%;
+  justify-content: center;
 }
 
-.scenario-container{
-  overflow: scroll;
-  max-height: 50%;
-  padding: 0 1rem 0 1rem;
-  background-color: rgba(0, 0, 0, 0.459);
-  border-radius: 1rem;
-}
-
-/* Scrollbar ausblenden */
-.scenario-container::-webkit-scrollbar {
-  display: none;
-}
-
-/* Für Firefox */
-.scenario-container {
-  scrollbar-width: none; /* Firefox */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap:var(--distance);
+  width: 100%;
+  justify-content: center;
 }
 
 .an-abmelden-toggle-button {
   width: 150px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 0.1rem 0;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
   cursor: pointer;
-  border-radius: 1rem;
-  font-size: 1em;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-body);
   text-align: center;
 }
 
 .an-abmelden-toggle-button:hover {
-  background-color: #0056b3;
+  background-color: var(--secondary-color);
+}
+
+.content-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+}
+
+.scenario-container {
+  width: 100%;
+  padding: var(--distance);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.content-container::-webkit-scrollbar{
+  display: none;
+}
+
+.content-container {
+  scrollbar-width: none;
 }
 
 .scenario {
-  margin: 1rem 0 1rem 0 ;
-  max-width: 500px;
-  height: 125px;
+  width: 100%;
+  max-width: 700px;
+  height: 130px;
   display: flex;
   align-items: center;
-  border: none;
-  border-radius: 1rem;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.562);
-  background-color: #00000085;
-  color: aliceblue;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  background-color: var(--highlight-background-color);
+  color: var(--text-color);
 }
 
 .scenario-image {
-  width:150px;
-  height: 125px;
+  width: 140px;
+  height: 130px;
   object-fit: cover;
-  margin-right: 5px;
-  border-radius: 1rem 0 0 1rem;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
 
 .scenario-details {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
+  padding: 0.5rem;
 }
-
 .scenario h4 {
-  font-size: 1em;
-  margin-top:0.5rem;
+  margin: auto;
 }
 
-.scenario p {
-  font-size: 0.9em;
-  margin-top: 0.2rem;
-}
 
 .button-group {
+  width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  
 }
-
-.button-group button{
-  display: flex;
-  max-height: 30px;
-  margin: 1px;
-  padding: 0 1rem 0 ;
-  border: none;
-  background-color:rgba(0, 0, 0, 0);
-  cursor: pointer;
-}
-

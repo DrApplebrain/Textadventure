@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useParams, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+  useNavigate,
+} from "react-router-dom";
+import Forum from "./Pages/Forum";
+import ThemenAnsicht from "./Pages/ThemenAnsicht";
 import PropTypes from "prop-types";
 import Home from "./Pages/Home";
 import Profile from "./Pages/Profile";
@@ -11,7 +19,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import NoHeaderFooterLayout from "./Components/NoHeaderFooterLayout";
 import { ScenarioProvider } from "./Scenarios/ScenarioContext";
-import TestGameScreen from "./Pages/Test-GameScreen"; // Korrigierter Importpfad
+// import TestGameScreen from "./Pages/Test-GameScreen"; // Korrigierter Importpfad
 
 function App() {
   const [originPage, setOriginPage] = useState("stories");
@@ -47,9 +55,13 @@ function App() {
             path="/register"
             element={!isLoggedIn && <Register onLogin={handleLogin} />}
           />
-          <Route
+          {/* <Route
             path="/test-game"
             element={<TestGameScreen />} // Route für die Test-GameScreen-Komponente
+          /> */}
+          <Route
+            path="/stories"
+            element={<Stories setOriginPage={setOriginPage} />}
           />
           <Route
             path="*"
@@ -58,6 +70,8 @@ function App() {
                 <Header />
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/forum" element={<Forum />} />
+                  <Route path="/thread/:topicId" element={<ThemenAnsicht />} />
                   <Route
                     path="/profile"
                     element={
@@ -71,10 +85,6 @@ function App() {
                     }
                   />
                   <Route path="/about" element={<About />} />
-                  <Route
-                    path="/stories"
-                    element={<Stories setOriginPage={setOriginPage} />}
-                  />
                 </Routes>
                 <Footer />
               </>
@@ -94,7 +104,13 @@ const GameScreenWrapper = ({ originPage }) => {
     navigate(`/${originPage}`);
   };
 
-  return <GameScreen scenarioId={scenarioId} scenarioTitle={decodeURIComponent(scenarioTitle)} onExit={exitGame} />;
+  return (
+    <GameScreen
+      scenarioId={scenarioId}
+      scenarioTitle={decodeURIComponent(scenarioTitle)}
+      onExit={exitGame}
+    />
+  );
 };
 
 GameScreenWrapper.propTypes = {
